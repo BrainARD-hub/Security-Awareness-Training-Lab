@@ -1,0 +1,4 @@
+captured_m365.txt
+*.log
+__pycache__/
+*.pyc
