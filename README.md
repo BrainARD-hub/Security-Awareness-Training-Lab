@@ -1,5 +1,6 @@
 # 🎯 GoPhish Phishing Simulation Lab
 
+[![Watch on YouTube](https://img.shields.io/badge/▶-Watch%20Tutorial-red?logo=youtube&logoColor=white)](https://www.youtube.com/@HabeebFactor)
 ![Beginner Friendly](https://img.shields.io/badge/Level-Beginner%20Friendly-brightgreen)
 ![Lab Ready](https://img.shields.io/badge/Environment-Lab%20Ready-blue)
 ![Cybersecurity](https://img.shields.io/badge/Focus-Cybersecurity-red)
@@ -8,8 +9,6 @@
 ![MailHog](https://img.shields.io/badge/Tool-MailHog-yellow)
 ![Kali Linux](https://img.shields.io/badge/OS-Kali%20Linux-black)
 ![License](https://img.shields.io/badge/License-MIT-green)
-
-# 🎯 GoPhish Phishing Simulation Lab
 
 Because one click can change everything.
 
