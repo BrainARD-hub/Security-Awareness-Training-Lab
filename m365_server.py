@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, send_file
 import datetime
 import os
 
-BASE_DIR = os.path.expanduser("~/phishpages")
+BASE_DIR = os.path.expanduser("~/Security-Awareness-Training-Lab")
 
 app = Flask(__name__)
 LOG = os.path.join(BASE_DIR, "captured_m365.txt")
